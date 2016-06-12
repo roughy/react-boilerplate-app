@@ -1,0 +1,8 @@
+[...]
+  // construct the counter
+  constructor(props) {
+    super(props);
+    this.state = {count : parseInt(props.start)};
+    this.onClick = this.onClick.bind(this);
+  }
+[...]

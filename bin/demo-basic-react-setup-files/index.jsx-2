@@ -1,0 +1,14 @@
+import React from 'react';
+import {render} from 'react-dom';
+
+/**
+ * Application start point
+ */
+class App extends React.Component {
+  render () {
+    return <p>Hello World! (proudly presented by React)</p>;
+  }
+}
+
+// Render application components into root element
+render(<App/>, document.getElementById('app'));

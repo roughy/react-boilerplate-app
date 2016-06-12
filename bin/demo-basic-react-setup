@@ -1,0 +1,88 @@
+#!/bin/sh
+
+PROJECT="react-boilerplate-app"
+
+NAME=$0
+FILES=${NAME}-files
+PAGE=0
+PAGES=13
+
+wait() {
+  read -p "" -n1 -s
+  clear
+}
+
+next() {
+  PAGE=$((PAGE+1)) 
+  wait; 
+  echo; echo "  Demonstration of a basic react application (${PAGE}/${PAGES})"
+  echo; echo "  $1"; echo
+}
+
+filecontent() {
+  echo; echo "///// $1"
+  cat ${FILES}/$1
+  echo "/////"
+}
+
+next
+next "Setup project \"${PROJECT}\" with npm"
+echo "mkdir ${PROJECT}
+cd ${PROJECT}
+npm init"
+
+next "Install webpack"
+echo "npm i webpack -S
+vim webpack.config.js"
+filecontent "webpack.config.js-1"
+
+next "Create project directories"
+echo "mkdir -p src/app
+mkdir -p public/js"
+
+next "Create entry file"
+echo "vim src/app/index.jsx"
+filecontent "index.jsx-1"
+
+next "Build and pack"
+echo "./node_modules/.bin/webpack -d
+la public/js/"
+
+next "Create index.html"
+echo "vim src/client/index.html"
+filecontent "index.html-1"
+
+next "Open in browser"
+echo "open src/client/index.html"
+
+next "Install babel for es6 and react"
+echo "npm i babel-loader babel-preset-es2015 babel-preset-react -S
+vim .babelrc
+vim webpack.config.js"
+filecontent ".babelrc-1"
+filecontent "webpack.config.js-2"
+
+next "Install react"
+echo "npm i react react-dom -S
+vim src/app/index.jsx"
+filecontent "index.jsx-2"
+echo; echo "./node_modules/.bin/webpack -d"
+
+next "Convinience stuff"
+echo "./node_modules/.bin/webpack -d --watch
+vim package.json"
+filecontent "package.json-1"
+echo; echo "npm run dev"
+
+next "Adding a new component"
+echo "vim src/app/Counter.jsx
+vim src/app/index.jsx"
+filecontent "Counter.jsx-1"
+filecontent "index.jsx-3"
+
+next "Adding props"
+echo "vim src/app/Counter.jsx
+vim src/app/index.jsx"
+filecontent "Counter.jsx-2"
+filecontent "index.jsx-4"
+

@@ -1,0 +1,15 @@
+[...]
+import CounterComponent from './Counter.jsx';
+[...]
+class App extends React.Component {
+  render () {
+    return (
+      <div>
+        <p>Please start counting!</p>
+        <CounterComponent />
+      </div>
+    );
+  }
+}
+
+[...]
